@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './store';
 import './styles/index.scss';
-import { register } from './swReg';
+// import { register } from '../src/swReg';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -14,4 +14,4 @@ root.render(
 
 );
 
-register();
+// register();

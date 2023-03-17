@@ -17,6 +17,7 @@ class Picture extends React.Component<any, IState>{
     componentDidMount(): void {
         let cvs = document.getElementById('cvs') as any;
         cvs.width = document.getElementById("edit-page")?.offsetWidth
+        cvs.width = cvs.width - 5
     }
 
     onChangeHandler = (e: any) => {
@@ -35,25 +36,39 @@ class Picture extends React.Component<any, IState>{
         let str = this.props.txt
         let ratio = this.props.ratio
         let width = cvs.width
-        let height = cvs.height
-        cvs.width = document.getElementById("edit-page")?.offsetWidth
+        let height = cvs.hight
+        cvs.width = document.getElementById("cvs")?.offsetWidth
         cvs.width = cvs.width - 5
+        const page = document.getElementById("edit-page")
+        if (page) {
+            if (cvs.height > page.style.height) {
+                page.style.height = 'auto'
+                console.log("change")
+            }
+        }
 
+
+        let fontsize = cvs.width * 0.01
 
         img.onload = function () {
             cvs.height = cvs.width * (img.height / img.width)
             ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
             cvs.style.backgroundImage = cvs.toDataURL()
+            ctx.translate(-width, -height);
             for (let i = 0; i < 40; i++) {
                 for (let j = 0; j < 40; j++) {
+                    ctx.translate(cvs.width, cvs.height);
+
                     ctx.scale(2, 2);
-                    ctx.translate(-width / 2, -height / 2);
                     ctx.rotate(-20 * Math.PI / 180)
-                    ctx.font = "10px microsoft yahei";
+                    ctx.translate(-cvs.width, -cvs.height);
+                    ctx.font = "1vw microsoft yahei";
                     ctx.textAlign = 'center';
                     ctx.fillStyle = "rgba(255,255,255,0.8)";
-                    ctx.fillText(str, i * (str.length * 10 / ratio), j * (str.length * 10 / ratio));
+                    ctx.fillText(str, i * (str.length * 5 / ratio), j * (fontsize * 4 / ratio));
                     ctx.rotate(20 * Math.PI / 180)
+
+
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }
 
@@ -64,17 +79,21 @@ class Picture extends React.Component<any, IState>{
             str = store.getState().txt
             ratio = store.getState().ratio
             ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+
             cvs.style.backgroundImage = cvs.toDataURL()
             for (let i = 0; i < 40; i++) {
                 for (let j = 0; j < 40; j++) {
+                    ctx.translate(cvs.width, cvs.height);
+
                     ctx.scale(2, 2);
-                    ctx.translate(-width / 2, -height / 2);
                     ctx.rotate(-20 * Math.PI / 180)
-                    ctx.font = "10px microsoft yahei";
+                    ctx.translate(-cvs.width, -cvs.height);
+
+                    ctx.font = "1vw microsoft yahei";
                     ctx.textAlign = 'center';
                     ctx.fillStyle = "rgba(255,255,255,0.8)";
 
-                    ctx.fillText(str, i * (str.length * 10 / ratio), j * (str.length * 10 / ratio));
+                    ctx.fillText(str, i * (str.length * 5 / ratio), j * (fontsize * 4 / ratio));
                     ctx.rotate(20 * Math.PI / 180)
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }
@@ -115,7 +134,7 @@ class Picture extends React.Component<any, IState>{
                 </div>
 
 
-                <div className='cvsbox'>
+                <div className='cvsbox' id='cvsbox'>
                     <canvas id="cvs" ></canvas>
                 </div>
 

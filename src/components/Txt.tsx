@@ -6,19 +6,6 @@ import Picture from "./Picture";
 import store from "../store";
 import { connect } from "react-redux";
 
-// export default function Txt() {
-
-//     const change = (e: ChangeEvent<HTMLInputElement>) => {
-//         console.log(e.target.value)
-//     }
-//     return (
-//         <div className="txt">
-//             <span>水印文字</span><br />
-//             <input type="text" placeholder="请输入您需要添加的文字" onChange={change}></input>
-//         </div>
-//     )
-// }
-
 class Txt extends React.Component<any, any> {
     constructor(props: any) {
         super(props);

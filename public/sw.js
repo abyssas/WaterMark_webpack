@@ -1,1 +1,1 @@
-console.log("service worker loaded!")
+console.log("loaded!")
