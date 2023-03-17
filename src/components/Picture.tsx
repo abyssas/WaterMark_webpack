@@ -57,18 +57,15 @@ class Picture extends React.Component<any, IState>{
             ctx.translate(-width, -height);
             for (let i = 0; i < 40; i++) {
                 for (let j = 0; j < 40; j++) {
-                    ctx.translate(cvs.width, cvs.height);
-
                     ctx.scale(2, 2);
+                    ctx.translate(-cvs.width / 2, -cvs.height / 2);
                     ctx.rotate(-20 * Math.PI / 180)
-                    ctx.translate(-cvs.width, -cvs.height);
-                    ctx.font = "1vw microsoft yahei";
+
+                    ctx.font = "10px microsoft yahei";
                     ctx.textAlign = 'center';
                     ctx.fillStyle = "rgba(255,255,255,0.8)";
-                    ctx.fillText(str, i * (str.length * 5 / ratio), j * (fontsize * 4 / ratio));
+                    ctx.fillText(str, i * (str.length * 10 / ratio), j * str.length * 10);
                     ctx.rotate(20 * Math.PI / 180)
-
-
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }
 
@@ -83,17 +80,16 @@ class Picture extends React.Component<any, IState>{
             cvs.style.backgroundImage = cvs.toDataURL()
             for (let i = 0; i < 40; i++) {
                 for (let j = 0; j < 40; j++) {
-                    ctx.translate(cvs.width, cvs.height);
-
                     ctx.scale(2, 2);
+                    ctx.translate(-cvs.width / 2, -cvs.height / 2);
                     ctx.rotate(-20 * Math.PI / 180)
-                    ctx.translate(-cvs.width, -cvs.height);
+                    ctx.translate(width / 2, height / 2);
 
-                    ctx.font = "1vw microsoft yahei";
+                    ctx.font = "10px microsoft yahei";
                     ctx.textAlign = 'center';
                     ctx.fillStyle = "rgba(255,255,255,0.8)";
 
-                    ctx.fillText(str, i * (str.length * 5 / ratio), j * (fontsize * 4 / ratio));
+                    ctx.fillText(str, i * (str.length * 10 / ratio), j * str.length * 10);
                     ctx.rotate(20 * Math.PI / 180)
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                 }
