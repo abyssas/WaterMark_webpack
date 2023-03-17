@@ -1,0 +1,52 @@
+$boxColor: rgb(219, 219, 215);
+
+.box {
+    background-color: rgba(145, 168, 190, 0.694);
+    // margin-top: 5vh;
+    margin-left: 3vw;
+    // position: absolute;
+    width: 25vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $boxColor ;
+    border-radius: 10px;
+    padding: 2vh;
+    font-size: 10px;
+    // background-color: #ffffffaa;
+
+    .txt {
+        font-size: 2.5vh;
+        font-weight: 800;
+        margin-top: 5vh;
+    }
+
+    #range {
+        -webkit-appearance: none;
+        border-radius: 10px;
+        box-shadow: 0 1px 1px #def3f8, inset 0 .100em .100em #0d1112;
+
+
+        :-webkit-slider-thumb {
+            height: 25px;
+            width: 25px;
+            margin-top: -5px;
+            background: #ffffff;
+            border-radius: 50%;
+            border: solid 0.125em rgba(205, 224, 230, 0.5);
+            box-shadow: 0 .125em .125em #3b4547;
+        }
+
+        :focus {
+            outline: none;
+        }
+    }
+
+    .input {
+        height: 5vh;
+        border-radius: 10px;
+        box-shadow: 0 1px 1px #def3f8, inset 0 .25em .25em #0d1112;
+
+    }
+
+}
