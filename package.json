@@ -2,9 +2,15 @@
   "name": "watermarker",
   "version": "1.0.0",
   "main": "src/index.ts",
+  "private": true,
+  "background": {
+    "server_worker": "background.js"
+  },
+  "homepage": "https://abyssas.github.io/WaterMark_webpack",
   "scripts": {
     "start": "webpack server --open",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "deploy": "gh-pages -d dist"
   },
   "license": "MIT",
   "dependencies": {

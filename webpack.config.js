@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { webpack } = require('webpack');
 
 
@@ -34,6 +34,11 @@ module.exports = {
             filename: 'index.html',
             title: "Demo"
         }),
+        // new webpack.DllPlugin({
+        //     path: 'manifest.json',
+        //     name: 'bundle',
+        //     context: __dirname
+        // })
         // new CleanWebpackPlugin(),
         // new webpack.ProvidePlugin({
         //     process: 'process/browser'
