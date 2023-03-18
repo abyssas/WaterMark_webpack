@@ -16,39 +16,48 @@ class Picture extends React.Component<any, IState>{
 
     componentDidMount(): void {
         let cvs = document.getElementById('cvs') as any;
+        let page = document.getElementById("edit-page") as any
         cvs.width = document.getElementById("edit-page")?.offsetWidth
         cvs.width = cvs.width - 5
     }
 
     draw = () => {
         let cvs = document.getElementById('cvs') as any;
+        let page = document.getElementById("edit-page") as any
         var ctx = cvs.getContext('2d')
-        let str = store.getState().txt
+        let str = store.getState().txt as any
         let ratio = store.getState().ratio as any
         let width = cvs.width
         let height = cvs.height
+
         var img = new Image()
         img.src = this.state.imgUrl
         ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
+        console.log("1")
         str = store.getState().txt
         ratio = store.getState().ratio
         cvs.style.backgroundImage = cvs.toDataURL()
-        for (let i = 0; i < 40; i++) {
-            for (let j = 0; j < 40; j++) {
+        let flag = 1;
+
+        for (let i = (-width / 10); i < width / 10; i++) {
+            for (let j = (-height / 10); j < height / 10; j++) {
+                ctx.translate(width / 2, height / 2);
                 ctx.scale(2, 2);
-                ctx.translate(-cvs.width / 2, -cvs.height / 2);
                 ctx.rotate(-20 * Math.PI / 180)
-                // ctx.translate(width / 2, height / 2);
-                ctx.font = "10px microsoft yahei";
+                ctx.translate(-width / 2, -height / 2);
+                // ctx.fillRect(0, 0, width, height)
+                ctx.font = "0.5vw microsoft yahei";
                 ctx.textAlign = 'center';
-                ctx.fillStyle = "rgba(255,255,255,0.8)";
-                ctx.fillText(str, i * (str.length * 10 / ratio), j * str.length * 10);
+                ctx.fillStyle = "rgba(32,37,53,0.5)";
+                ctx.fillText(str, (i * (str.length * 20) / ratio + (flag * str.length * 5)), (j * 20 / ratio));
+                flag = flag * (-1)
                 ctx.rotate(20 * Math.PI / 180)
+
+                ctx.restore();
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
             }
 
         }
-        console.log("123123132")
     }
 
     onChangeHandler = (e: any) => {
@@ -64,10 +73,6 @@ class Picture extends React.Component<any, IState>{
         let cvs = document.getElementById('cvs') as any;
         cvs.style.boxShadow = "0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 80px 0 rgba(0, 0, 0, 0.19)"
         var ctx = cvs.getContext('2d')
-        let str = this.props.txt
-        let ratio = this.props.ratio
-        let width = cvs.width
-        let height = cvs.hight
         cvs.width = document.getElementById("cvs")?.offsetWidth
         cvs.width = cvs.width - 5
         const page = document.getElementById("edit-page")
@@ -78,55 +83,17 @@ class Picture extends React.Component<any, IState>{
             }
         }
 
+        img.onload = () => {
 
-
-        let fontsize = cvs.width * 0.01
-        var draw = this.draw()
-        img.onload = function () {
             cvs.height = cvs.width * (img.height / img.width)
             ctx.drawImage(img, 0, 0, cvs.width, cvs.height);
-            draw
-            // cvs.style.backgroundImage = cvs.toDataURL()
-            // ctx.translate(-width, -height);
-            // for (let i = 0; i < 40; i++) {
-            //     for (let j = 0; j < 40; j++) {
-            //         ctx.scale(2, 2);
-            //         ctx.translate(-cvs.width / 2, -cvs.height / 2);
-            //         ctx.rotate(-20 * Math.PI / 180)
-            //         ctx.font = "10px microsoft yahei";
-            //         ctx.textAlign = 'center';
-            //         ctx.fillStyle = "rgba(255,255,255,0.8)";
-            //         ctx.fillText(str, i * (str.length * 10 / ratio), j * str.length * 10);
-            //         ctx.rotate(20 * Math.PI / 180)
-            //         ctx.setTransform(1, 0, 0, 1, 0, 0);
-            //     }
-
-            // }
+            console.log("2")
+            this.draw()
         }
-
+        // var draw = this.draw()
         store.subscribe(() => {
             this.draw();
-            // width = cvs.width
-            // height = cvs.height
-            // console.log(cvs.height)
-            // str = store.getState().txt
-            // ratio = store.getState().ratio
-            // cvs.style.backgroundImage = cvs.toDataURL()
-            // for (let i = 0; i < 40; i++) {
-            //     for (let j = 0; j < 40; j++) {
-            //         ctx.scale(2, 2);
-            //         ctx.translate(-cvs.width / 2, -cvs.height / 2);
-            //         ctx.rotate(-20 * Math.PI / 180)
-            //         // ctx.translate(width / 2, height / 2);
-            //         ctx.font = "10px microsoft yahei";
-            //         ctx.textAlign = 'center';
-            //         ctx.fillStyle = "rgba(255,255,255,0.8)";
-            //         ctx.fillText(str, i * (str.length * 10 / ratio), j * str.length * 10);
-            //         ctx.rotate(20 * Math.PI / 180)
-            //         ctx.setTransform(1, 0, 0, 1, 0, 0);
-            //     }
 
-            // }
         })
         const btn = document.getElementById("upload") as any
         btn.innerHTML = "<input type='button' id='loading' value='点击下载' />"
@@ -140,7 +107,7 @@ class Picture extends React.Component<any, IState>{
         const canvas = document.querySelector('#cvs') as any;
         const el = document.createElement('a');
         el.href = canvas.toDataURL();
-        el.download = '文件名称';
+        el.download = '水印照片';
         const event = new MouseEvent('click');
         el.dispatchEvent(event);
     }

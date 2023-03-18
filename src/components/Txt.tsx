@@ -42,7 +42,7 @@ class Txt extends React.Component<any, any> {
                 <br />
                 <span className="txt">请输入您想要添加的水印比例:</span><br />
                 {/* <input className="input" type='text' onChange={this.handleChange} /><br /> */}
-                <input id="range" type="range" min="0" max="1" step="0.1" name='ratio' onChange={this.handleChange} />
+                <input id="range" type="range" min="0" max="1" step="0.01" name='ratio' onChange={this.handleChange} />
             </div>
 
         )
