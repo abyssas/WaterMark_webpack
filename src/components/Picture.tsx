@@ -46,7 +46,8 @@ class Picture extends React.Component<any, IState>{
                 ctx.rotate(-20 * Math.PI / 180)
                 ctx.translate(-width / 2, -height / 2);
                 // ctx.fillRect(0, 0, width, height)
-                ctx.font = "0.5vw microsoft yahei";
+                ctx.font = "0.5rem microsoft yahei";
+                // let size = document.getComputedStyle(ctx).fontSize as any
                 ctx.textAlign = 'center';
                 ctx.fillStyle = "rgba(32,37,53,0.5)";
                 ctx.fillText(str, (i * (str.length * 20) / ratio + (flag * str.length * 5)), (j * 20 / ratio));
