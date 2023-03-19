@@ -9,31 +9,31 @@
     <link rel="icon" href="./favicon.ico" />
     <link rel="apple-touch-icon" href="./logo.png" />
     <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="public/style.css" />
     <title>
         Demo
     </title>
-    <script defer src="bundle.js"></script>
-</head>
+<script defer src="bundle.js"></script></head>
 
 <body>
     <div id="root"></div>
     <script>
-        // if ('serviceWorker' in navigator) {
-        //     //判断浏览器是否支持
-        //     window.addEventListener('load', function () {
-        //         // window在加载的时候来注册“sw.js”这个文件。这个文件就是serviceWorker
-        //         navigator.serviceWorker.register('sw.js')
-        //             .then(registration => {
-        //                 // 返回一个promise
-        //                 console.log("成功！");
-        //                 console.log(registration)
-        //             })
-        //             .catch(err => {
-        //                 console.log("失败")
-        //                 console.log(err)
-        //             })
-        //     })
-        // }
+        if ('serviceWorker' in navigator) {
+            //判断浏览器是否支持
+            window.addEventListener('load', function () {
+                // window在加载的时候来注册“sw.js”这个文件。这个文件就是serviceWorker
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        // 返回一个promise
+                        console.log("成功！");
+                        console.log(registration)
+                    })
+                    .catch(err => {
+                        console.log("失败")
+                        console.log(err)
+                    })
+            })
+        }
     </script>
 </body>
 
