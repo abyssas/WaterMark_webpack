@@ -24,7 +24,7 @@ jobs:
 
       # 2、部署到 GitHub Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@4.2.0
         with:
           ACCESS_TOKEN: ${{ secrets.REACT_WATERMARK }}
           REPOSITORY_NAME: abyssas/abyssas.github.io
