@@ -76,12 +76,16 @@ $backgroundColor: rgb(235, 236, 240);
         }
 
         #upload {
+
             margin-left: 10vw;
             text-align: left;
             width: 12.5vw;
+
         }
 
         #loading {
+            width: auto;
+            padding: 0 10px;
             text-align: center;
             margin: auto;
             right: 10px;
