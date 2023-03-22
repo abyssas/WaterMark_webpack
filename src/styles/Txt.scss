@@ -13,8 +13,28 @@ $boxColor: rgb(219, 219, 215);
     padding: 2vh;
     font-size: 10px;
     z-index: 1;
-    margin-top: 2vh;
+    margin-top: 1vh;
     padding-bottom: 10vh;
+
+    .ratio {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+        .ratio-ch {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            #rangex,
+            #rangey {
+                width: 30vw;
+            }
+        }
+    }
 
 
     // background-color: #ffffffaa;
@@ -23,13 +43,15 @@ $boxColor: rgb(219, 219, 215);
         font-size: 1rem;
         font-weight: 800;
         margin-top: 1vh;
+        width: 45%;
     }
 
-    #range {
+    #rangex,
+    #rangey {
         -webkit-appearance: none;
         border-radius: 10px;
         box-shadow: 0 1px 1px #def3f8, inset 0 .100em .100em #0d1112;
-
+        width: 45%;
 
         :-webkit-slider-thumb {
             height: 25px;
@@ -47,11 +69,17 @@ $boxColor: rgb(219, 219, 215);
     }
 
     .input {
-        height: 5vh;
+        margin-top: 1vh;
+        height: 4vh;
         font-size: 0.4rem;
         border-radius: 10px;
         box-shadow: 0 1px 1px #def3f8, inset 0 .25em .25em #0d1112;
 
+    }
+
+    #rangex,
+    #rangey {
+        margin-top: 1vh;
     }
 
 }

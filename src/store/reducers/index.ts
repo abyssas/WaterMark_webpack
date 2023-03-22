@@ -8,15 +8,19 @@
 // export default rootReducers
 const initState = {
     txt: "",
-    ratio: ""
+    ratiox: "",
+    ratioy: "",
+    size: ""
 }
 export const reducer = (state = initState, action: any) => {
-    const { type, data, ratio } = action
+    const { type, data, ratiox, ratioy, size } = action
     switch (type) {
         case 'add':
             return Object.assign({}, state, {
                 txt: data,
-                ratio: ratio
+                ratiox: ratiox,
+                ratioy: ratioy,
+                size: size
             })
         default:
             return state
