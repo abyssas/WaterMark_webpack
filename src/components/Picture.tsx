@@ -84,8 +84,9 @@ class Picture extends React.Component<any, IState>{
             imgUrl: window.URL.createObjectURL(file),
         }, () => {
             img.src = this.state.imgUrl;
+            // console.log("1312321", img.src)
+
         })
-        // console.log("1312321", this.state.imgUrl)
         let cvs = document.getElementById('cvs') as any;
         cvs.style.boxShadow = "0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 80px 0 rgba(0, 0, 0, 0.19)"
         var ctx = cvs.getContext('2d')
